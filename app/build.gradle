@@ -1,0 +1,71 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 33
+
+    defaultConfig {
+        applicationId "com.company.netsdk"
+        minSdkVersion 23
+        targetSdkVersion 33
+        versionCode 1
+        versionName "1.0"
+        packagingOptions{
+            doNotStrip "/armeabi/.so"
+            doNotStrip "/armeabi-v7a/.so"
+            doNotStrip "/arm64-v8a/.so" }
+    }
+    buildTypes {
+        release {
+            debuggable true
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        encoding "UTF-8"
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs=['libs']
+        }
+    }
+}
+
+android {
+    lintOptions {
+        abortOnError false
+        checkReleaseBuilds false
+    }
+
+}
+
+//repositories {
+//    flatDir {
+//        dirs 'libs'
+//    }
+//}
+
+dependencies {
+//    implementation 'com.android.support:appcompat-v7:26.0.0-alpha1'
+//    implementation 'com.github.Lingber:Android_DataGridView:1.01'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+//    implementation 'androidx.core:core:1.8.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
+//    implementation 'androidx.percentlayout:percentlayout:1.0.0'
+    //    compile project(':inetsdk')
+    implementation ('com.android.support:design:26.0.1')
+    implementation ('com.google.android.gms:play-services:11.0.4')
+    implementation ("com.google.firebase:firebase-messaging:11.0.4")
+//    implementation group: 'com.google.android.gms', name: 'play-services', version: '11.0.4'
+    implementation 'com.google.android.material:material:1.1.0'
+
+//    implementation ('com.google.firebase:firebase-messaging:11.0.4'){
+//        exclude group:'androidx.legacy'
+//    }
+
+    implementation ('com.google.firebase:firebase-messaging:11.0.4')
+
+    implementation files('libs/Android_DataGridView-1.01.aar')
+}
+
+
